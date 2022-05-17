@@ -2,7 +2,12 @@
 
 namespace App\Imports;
 
-use App\Models\Produto;
+use App\Models\Categoria;
+use App\Models\Zona;
+use App\Services\Criador;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,12 +20,33 @@ class ProdutoImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new Produto([
-            'ean' => $row['ean'],
-            'descricao' => $row['descricao'], 
-            'sku' => $row['sku'],
-            'categoria_id' => $row['categoria_id'],
-            'zona_id' => $row['zona_id']
-        ]);
+        $criarProduto = new Criador;
+
+        $categoria = Categoria::query()->where([
+            ['categoria', '=', $row['categoria']]
+        ])->value('id');
+        
+        $zona = Zona::query()->where([
+            ['zona', '=', $row['zona']]
+        ])->value('id');       
+
+        DB::transaction(function () use ($criarProduto, $row, $categoria, $zona){
+            $criarProduto->criarProduto(
+                $row['ean'],
+                $row['descricao'], 
+                $row['sku'],
+                $categoria,
+                $zona
+            );
+        });
+
+        return;
+        // return new Produto([
+        //     'ean' => $row['ean'],
+        //     'descricao' => $row['descricao'], 
+        //     'sku' => $row['sku'],
+        //     'categoria_id' => $categoria,
+        //     'zona_id' => $zona
+        // ]);
     }
 }

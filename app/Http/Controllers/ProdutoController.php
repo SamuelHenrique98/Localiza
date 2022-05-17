@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProdutoExport;
 use App\Http\Requests\BuscaRequest;
 use App\Http\Requests\ImportProdutoRequest;
 use App\Models\{Categoria, Produto, Zona};
-use Illuminate\Http\Request;
 use App\Services\{Criador, Funcao, Removedor};
 use Illuminate\Support\Facades\Redirect;
 use App\Imports\ProdutoImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ProdutoRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class ProdutoController extends Controller
 {
@@ -33,7 +35,6 @@ class ProdutoController extends Controller
         }else {
             $produtos = Produto::query()->simplePaginate(20);
         }
-
 
         return view('estoque.produto.index', compact('produtos', 'search'));
     }
@@ -118,5 +119,10 @@ class ProdutoController extends Controller
         Excel::import(new ProdutoImport,$request->file);
                
         return back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ProdutoExport, 'produto.xlsx');
     }
 }

@@ -35,9 +35,11 @@ Route::get('/menu-estoque', function () {
 Route::resource('estoque', EstoqueController::class);
 Route::resource('estoque.zona', ZonaController::class);
 Route::resource('categoria', CategoriaController::class);
+
 Route::controller(ProdutoController::class)->group(function(){
     Route::resource('produto', ProdutoController::class);
     Route::post('/produto-import', 'import')->name('produto.import');
+    Route::get('/produto-export', 'export')->name('produto.export');
 });
 
 

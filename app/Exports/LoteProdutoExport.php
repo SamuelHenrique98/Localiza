@@ -8,8 +8,6 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class LoteProdutoExport implements FromCollection, WithHeadings
 {
-    public $export;
-
     public function collection()
     {
         $LD = LoteProduto::query()->orderBy('lote_id', 'desc')->first();

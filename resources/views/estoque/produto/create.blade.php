@@ -3,6 +3,15 @@
 @section('titulo', 'Localiza!!!')
 
 @section('conteudo')
+@if ($errors->any())
+    <div class="alert alert-danger mt-1">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 @if(isset($produto))
 <h3 class="mt-1">Editar Produto</h3>

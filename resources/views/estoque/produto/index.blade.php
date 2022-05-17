@@ -3,6 +3,15 @@
 @section('titulo', 'Localiza!!!')
 
 @section('conteudo')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <h3 class="mt-1">Produtos</h3>
 <div class="d-flex justify-content-between align-items-center mt-1"> 
     <span class="d-flex">
@@ -10,6 +19,7 @@
     </span>
     <span class="d-flex">
         <a href="/g-estoque" class="btn btn-dark">Voltar</a>
+        <a class="btn btn-warning float-end" href="{{ route('produto.export') }}">Baixar modelo</a>
     </span>
 </div>
 <div class="row mt-2"> 
