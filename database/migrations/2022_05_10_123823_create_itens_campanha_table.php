@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('itens_campanha', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('sku');  
+            $table->integer('sku')->unique();  
             $table->string('produto');
             $table->foreignId('campanha_id')->constrained();
         });

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('ean');
             $table->string('descricao');
-            $table->integer('sku');
+            $table->integer('sku')->unique();
             $table->foreignId('categoria_id')->constrained();
             $table->foreignId('zona_id')->constrained();
         });
