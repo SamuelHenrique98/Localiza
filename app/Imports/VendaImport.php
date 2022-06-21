@@ -14,7 +14,8 @@ class VendaImport implements ToModel, WithHeadingRow
 {
     public function chamarFuncao(Funcao $funcao, array $row)
     {
-        return $funcao->FiltroVendaImport($row);
+        $id = $funcao->FiltroVendaImport($row);
+        return $id;
     }
 
     public function model(array $row)

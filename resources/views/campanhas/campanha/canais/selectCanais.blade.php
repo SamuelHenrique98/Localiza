@@ -26,8 +26,9 @@
         <option value="onstores">OnStores</option>
         <option value="fastshop">FastShop</option>
         <option value="shopee">Shopee</option>
+        <option value="oderco">Oderço</option>
+        <option value="yapay">Bits </option>
         <!--<option value=" "> </option>
-        <option value=" "> </option>
         <option value=" "> </option>
         <option value=" "> </option>
         <option value=" "> </option>

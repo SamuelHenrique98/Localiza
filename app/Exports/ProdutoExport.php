@@ -15,6 +15,6 @@ class ProdutoExport implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ["Ean", "Descricao", "Sku", "Zona", "Estoque"];
+        return ["Ean", "Descricao", "Sku", "Categoria", "Zona"];
     }
 }

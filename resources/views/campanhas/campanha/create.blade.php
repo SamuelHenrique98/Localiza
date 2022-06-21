@@ -15,7 +15,7 @@
 
 <h3 class="mt-1">Nova Campanha</h3>
 
-<a class="btn btn-warning float-end" href="{{ route('venda.export') }}">Baixar Modelo</a>
+<a class="btn btn-warning float-end" href="{{ route('campanha.export') }}">Baixar Modelo</a>
 
 <form action="{{ route('campanha.store') }}" method="post" enctype="multipart/form-data">
 @csrf

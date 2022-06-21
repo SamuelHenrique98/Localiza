@@ -41,12 +41,5 @@ class ProdutoImport implements ToModel, WithHeadingRow
         });
 
         return;
-        // return new Produto([
-        //     'ean' => $row['ean'],
-        //     'descricao' => $row['descricao'], 
-        //     'sku' => $row['sku'],
-        //     'categoria_id' => $categoria,
-        //     'zona_id' => $zona
-        // ]);
     }
 }
